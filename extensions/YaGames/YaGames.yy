@@ -16,9 +16,9 @@
   "date": "2020-10-03T02:05:14",
   "description": "",
   "exportToGame": true,
-  "extensionVersion": "1.0.3",
+  "extensionVersion": "1.0.4",
   "files": [
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"YaGames.js","constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"YaGames_DeviceMobile","hidden":false,"value":"\"mobile\"",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"YaGames_DeviceTablet","hidden":false,"value":"\"tablet\"",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"YaGames_DeviceDesktop","hidden":false,"value":"\"desktop\"",},
@@ -136,6 +136,7 @@
             2,
           ],"documentation":"","externalName":"YaGamesGML_MobileVibro","help":"YaGames_MobileVibro(double ms = 200)","hidden":false,"kind":5,"returnType":1,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"YaGames_Player_GetMode","argCount":0,"args":[],"documentation":"","externalName":"YaGamesGML_Player_GetMode","help":"YaGames_Player_GetMode()","hidden":false,"kind":5,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"YaGames_GameReadyOn","argCount":0,"args":[],"documentation":"","externalName":"YaGamesGMS_GameReadyOn","help":"YaGamesGMS_GameReadyOn()","hidden":false,"kind":5,"returnType":1,},
       ],"init":"","kind":5,"order":[
         {"name":"YaGames_getInitStatus","path":"extensions/YaGames/YaGames.yy",},
         {"name":"YaGames_setDebugMode","path":"extensions/YaGames/YaGames.yy",},
@@ -174,12 +175,29 @@
         {"name":"YaGames_Player_GetAllData","path":"extensions/YaGames/YaGames.yy",},
         {"name":"YaGames_Player_GetAllStats","path":"extensions/YaGames/YaGames.yy",},
       ],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"browser_hdpi.js","constants":[],"copyToTargets":-1,"filename":"browser_hdpi.js","final":"","functions":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"browser_get_device_pixel_ratio","argCount":0,"args":[],"documentation":"","externalName":"browser_get_device_pixel_ratio","help":"browser_get_device_pixel_ratio()","hidden":false,"kind":5,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"browser_stretch_canvas_ext","argCount":0,"args":[
+            2,
+            2,
+            2,
+          ],"documentation":"","externalName":"browser_stretch_canvas_ext","help":"browser_stretch_canvas_ext(canvas_id, w, h)","hidden":false,"kind":5,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"browser_scrollbars_enable","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"browser_scrollbars_enable","help":"browser_scrollbars_enable(z)","hidden":false,"kind":5,"returnType":1,},
+      ],"init":"","kind":5,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"YaGames.gml","constants":[],"copyToTargets":-1,"filename":"YaGames.gml","final":"","functions":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"browser_stretch_canvas","argCount":0,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"browser_stretch_canvas","help":"browser_stretch_canvas(width, height)","hidden":false,"kind":2,"returnType":1,},
+      ],"init":"","kind":2,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject": "",
   "hasConvertedCodeInjection": true,
   "helpfile": "",
-  "HTML5CodeInjection": "",
-  "html5Props": false,
+  "HTML5CodeInjection": "<GM_HTML5_PostStyle>\r\n<style>\r\n    body\r\n    {\r\n        overflow:hidden;\r\n    }\r\n</style>\r\n</GM_HTML5_PostStyle>",
+  "html5Props": true,
   "IncludedResources": [],
   "installdir": "",
   "iosCocoaPodDependencies": "",

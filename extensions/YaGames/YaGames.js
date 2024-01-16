@@ -179,6 +179,13 @@ function YaGamesGMS_SdkInit() {
 		console.log('Yandex SDK initialized');
 		self._ysdk = ysdk;
 		// We show the SDK that the game has loaded and you can start playing.
+	});
+}
+//gameready on
+function YaGamesGMS_GameReadyOn() {
+	let self = YaGamesGMS;
+	YaGames.init().then(ysdk => {
+		console.log('Yandex SDK GameReady');
 		self._ysdk.features.LoadingAPI?.ready();
 	});
 }
@@ -204,13 +211,16 @@ function YaGamesGMS_setDebugMode(debugStatus) {
  * Get the SDK initialization status
  * @returns  1 0
  */
-function YaGamesGMS_getInitStatus() {
+function YaGamesGMS_getInitStatus() 
+{
 	let self = YaGamesGMS;
-	if (self.getInitStatus()) {
+	if (self.getInitStatus()) 
+	{
 		self.browserConsoleLog("SDK is Initiated");
 		return 1;
 	}
-	else {
+	else 
+	{
 		self.browserConsoleLog("SDK not Initiated");
 		return 0;
 	}
