@@ -2,25 +2,26 @@
 if (not isMap(async_load)) {
     log("async_load got lost in cyberspace");
 } else {
-    if ((async_load[? "type"] == "YaGames") and (async_load[? "request_id"] == req_id)) {
+    if ((async_load[? "type"]== YaGames_AsyncEvent) and (async_load[? "request_id"] == req_id)) {
 		// Logging
         var _msg = json_encode(async_load);
         log(_msg);
 		//
         switch (async_load[? "event"]) {	
 			
-            case "playerPhotoRequest":
+            case YaGames_CallPlayerPhotoRequest:
                 // Player Photo request success
-                var user_id = async_load[? "value"];
+                var _photo = async_load[? "value"];
+				log("Photo: " + _photo);
             break;
 			
-            case "notPlayerInitSDK":
+            case YaGames_CallNotPlayerInitSDK:
                 // Player in SDK not initialized
             break;
-            case "notInitSDK":
+            case YaGames_CallNotInitSDK:
                 // SDK not initialized
             break;
-            case "RuntimeError":
+            case YaGames_CallRuntimeError:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];	

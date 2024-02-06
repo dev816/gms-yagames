@@ -1,16 +1,18 @@
 /// @description Parse YaGames events
-if (isMap(async_load)){
-    if ((async_load[? "type"] == "YaGames") and (async_load[? "request_id"] == req_id)) {
+if (not isMap(async_load)) {
+    log("async_load got lost in cyberspace");
+} else {
+    if ((async_load[? "type"]== YaGames_AsyncEvent) and (async_load[? "request_id"] == req_id)) {
 		// Logging
         var _msg = json_encode(async_load);
         log(_msg);
 		//
         switch (async_load[? "event"]) {	
 			
-            case "consumePurchase":
+            case YaGames_CallConsumePurchase:
                 // Consume Purchase success
             break;
-            case "consumePurchaseError":
+            case YaGames_CallConsumePurchaseError:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];			
@@ -18,13 +20,13 @@ if (isMap(async_load)){
 				
             break;
 			
-            case "notPaymentsInitSDK":
+            case YaGames_CallNotPaymentsInitSDK:
                 // Payments in SDK not initialized
             break;
-            case "notInitSDK":
+            case YaGames_CallNotInitSDK:
                 // SDK not initialized
             break;
-            case "RuntimeError":
+            case YaGames_CallRuntimeError:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];	

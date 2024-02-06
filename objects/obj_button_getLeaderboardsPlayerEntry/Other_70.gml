@@ -2,37 +2,43 @@
 if (not isMap(async_load)) {
     log("async_load got lost in cyberspace");
 } else {
-    if ((async_load[? "type"] == "YaGames") and (async_load[? "request_id"] == req_id)) {
+    if ((async_load[? "type"]== YaGames_AsyncEvent) and (async_load[? "request_id"] == req_id)) {
 		// Logging
         var _msg = json_encode(async_load);
         log(_msg);
 		//
         switch (async_load[? "event"]) {	
 			
-            case "leaderboardsPlayerEntry":
+            case YaGames_CallLeaderboardsPlayerEntry:
                 // Leaderboard Player Entry initialization success
-                var lb_data = async_load[? "data"];
+				var _data = json_parse(async_load[? "data"]);
+				log("Score: " + string(_data.score));
+				// _data.extraData
+				// _data.rank
+				// _data.player.publicName
+				// _data.player.uniqueID
+				// _data.formattedScore
             break;
-            case "leaderboardsPlayerEntryError":
+            case YaGames_CallLeaderboardsPlayerEntryError:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];			
                 // Leaderboard  Player Entry initialization error
             break;
-            case "leaderboardsPlayerNotPresent":
+            case YaGames_CallLeaderboardsPlayerNotPresent:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];			
                 // Leaderboard. No user data
             break;
 			
-            case "notLeaderboardInitSDK":
+            case YaGames_CallNotLeaderboardInitSDK:
                 // Leaderboard in SDK not initialized
             break;
-            case "notInitSDK":
+            case YaGames_CallNotInitSDK:
                 // SDK not initialized
             break;
-            case "RuntimeError":
+            case YaGames_CallRuntimeError:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];	

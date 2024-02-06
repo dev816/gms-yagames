@@ -2,18 +2,24 @@
 if (not isMap(async_load)) {
     log("async_load got lost in cyberspace");
 } else {
-    if ((async_load[? "type"] == "YaGames") and (async_load[? "request_id"] == req_id)) {
+    if ((async_load[? "type"]== YaGames_AsyncEvent) and (async_load[? "request_id"] == req_id)) {
 		// Logging
         var _msg = json_encode(async_load);
         log(_msg);
 		//
         switch (async_load[? "event"]) {	
 			
-            case "leaderboardsRequest":
+            case YaGames_CallLeaderboardsRequest:
                 // Leaderboard initialization success
-                var lb_data = async_load[? "data"];
+				var _data = json_parse(async_load[? "data"]);
+				log("AppID: " + string(_data.appID));
+				// _data.dеfault
+				// _data.name
+				// _data.title.en
+				// _data.title.ru
+
             break;
-            case "leaderboardsRequestError":
+            case YaGames_CallLeaderboardsRequestError:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];			
@@ -21,13 +27,13 @@ if (not isMap(async_load)) {
 				
             break;
 			
-            case "notLeaderboardInitSDK":
+            case YaGames_CallNotLeaderboardInitSDK:
                 // Leaderboard in SDK not initialized
             break;
-            case "notInitSDK":
+            case YaGames_CallNotInitSDK:
                 // SDK not initialized
             break;
-            case "RuntimeError":
+            case YaGames_CallRuntimeError:
                 var errCode = async_load[? "code"];
                 var errName = async_load[? "name"];
                 var errMessage = async_load[? "message"];	
